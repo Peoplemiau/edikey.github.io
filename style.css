@@ -1,121 +1,612 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-* {
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+/* Основные стили для тела документа */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
 
-.container {
-    width: 80%;
-    margin: auto;
-    margin-top: 2rem;
-    height: 80%;
+/* Оформление контейнера для чата */
+.chat-container {
+    width: 500px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-img {
-    width: 50px;
-    border-radius: 100%;
-}
-
-.msg-header {
-    border: 1px solid #ccc;
+/* Заголовок чата */
+.chat-header {
+    padding: 10px;
     background-color: #efefef;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-}
-
-.container1 {
-    float: left;
-}
-
-.active {
-    float: left;
-    color: black;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-align: center;
     font-weight: bold;
 }
 
-.chat-page {
-    padding: 0 0 50px 0;
-}
-
-.msg-inbox {
-    border: 1px solid #ccc;
-    overflow: hidden;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-.chats {
-    padding: 30px 15px 0 25px;
-}
-
-.msg-page {
-    max-height: 500px;
+/* Стили для области чата */
+.chat-box {
+    height: 400px;
     overflow-y: auto;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: #fbfbfb;
 }
 
-.msg-bottom {
-    border-top: 1px solid #ccc;
-    height: 11%;
-    background-color: #efefef;
+/* Стиль сообщений */
+.chat-message {
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    max-width: 80%;
 }
 
-.input-group {
-    float: right;
-    margin-top: 13px;
-    margin-right: 20px;
+/* Сообщения пользователя */
+.user-message {
+    background-color: #dff0d8;
+    text-align: right;
+    margin-left: auto;
 }
 
-.form-control {
+/* Сообщения бота */
+.bot-message {
+    background-color: #f2dede;
+    text-align: left;
+    margin-right: auto;
+}
+
+/* Элементы ввода для сообщения */
+#message-input {
+    width: calc(100% - 70px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+/* Кнопка отправки сообщения */
+#send-button {
+    padding: 10px;
     border: none;
-    border-radius: 20px;
+    background-color: #5cb85c;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-.input-group-text {
-    background: transparent;
+/* Эффект нажатия на кнопку отправки */
+#send-button:hover {
+    background-color: #4cae4c;
+}
+
+/* Индикатор, показывающий, что бот печатает */
+.typing-indicator {
+    font-style: italic;
+    color: #999;
+}
+
+/* Скрытие невидимых элементов */
+.hidden {
+    display: none;
+}
+
+/* Стиль для кнопок */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+/* Кнопка очистки чата */
+.clear-button {
+    padding: 10px;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.received-chats, .outgoing-chats {
-    margin: 26px 20px;
+/* Эффект нажатия на кнопку очистки */
+.clear-button:hover {
+    background-color: #c9302c;
 }
 
-.received-chats img, .outgoing-chats img {
-    width: 50px;
+/* Кнопка сохранения чата */
+.save-button {
+    padding: 10px;
+    background-color: #5bc0de;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.received-msg-inbox p, .outgoing-chats-msg p {
-    border-radius: 10px;
-    padding: 1rem;
+/* Эффект нажатия на кнопку сохранения */
+.save-button:hover {
+    background-color: #31b0d5;
 }
 
-.received-msg-inbox p {
-    background: #efefef;
-    color: #646464;
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 600px) {
+    .chat-container {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    #message-input {
+        width: calc(100% - 50px);
+    }
+
+    #send-button {
+        width: 50px;
+    }
 }
 
-.outgoing-chats-msg p {
-    background-color: #3a12ff;
+/* Стили для светлой темы */
+.light-theme .chat-container {
+    background-color: #ffffff;
+    color: #343a40;
+}
+
+/* Стили для темной темы */
+.dark-theme .chat-container {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+
+.dark-theme .chat-header {
+    background-color: #23272b;
+}
+
+/* Стили для кнопок темной темы */
+.dark-theme .clear-button {
+    background-color: #c9302c;
+}
+
+.dark-theme .save-button {
+    background-color: #5bc0de;
+}
+
+/* Стили для сообщений темной темы */
+.dark-theme .user-message {
+    background-color: #3c763d;
+}
+
+.dark-theme .bot-message {
+    background-color: #a94442;
+}
+
+/* Анимация сообщений */
+.chat-message {
+    transition: all 0.3s ease;
+}
+
+.chat-message:hover {
+    transform: scale(1.02);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для заголовка кнопок */
+.button-container button {
+    flex: 1;
+    margin: 0 5px;
+}
+
+/* Стили для формы */
+form {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+/* Стиль для иконок */
+.icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+/* Эффекты для кнопок с иконками */
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Стили для выделения активного сообщения */
+.chat-message.active {
+    border: 2px solid #5cb85c;
+}
+
+/* Подсветка новых сообщений */
+.chat-message.new {
+    background-color: #d9edf7;
+}
+
+/* Элементы для аватаров */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Стили для истории сообщений */
+.chat-history {
+    background: #f8f9fa;
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Стиль для секции помощи */
+.help-section {
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Стили для заметок */
+.note {
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* Обертка для контента сообщений */
+.message-content {
+    display: flex;
+    align-items: center;
+}
+
+/* Пространство между иконками и текстом */
+.message-content .icon {
+    margin-right: 5px;
+}
+
+/* Основные стили для загрузки */
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+}
+
+/* Анимация загрузки */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Стиль для дополнительных кнопок */
+.extra-button {
+    padding: 5px;
+    background-color: #f0ad4e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Эффект наведения на дополнительные кнопки */
+.extra-button:hover {
+    background-color: #ec971f;
+}
+
+/* Информация о пользователе */
+.user-info {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #d9edf7;
+    border-left: 4px solid #5bc0de;
+}
+
+/* Стили для подсказок */
+.tooltip {
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* Модальные окна */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Содержимое модального окна */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* Стили для кнопок в модальном окне */
+.modal-button {
+    float: right;
+    padding: 10px 20px;
+    background-color: #5bc0de;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.modal-button:hover {
+    background-color: #31b0d5;
+}
+
+/* Стили для форм ввода в модальных окнах */
+.modal-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Стили при активации модального окна */
+.modal.active {
+    display: block;
+}
+
+/* Позиционирование для стрелочек */
+.arrow {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+/* Элементы для отступов */
+.spacing {
+    margin: 10px 0;
+}
+
+/* Стиль для кнопок со стилем */
+.stylish-button {
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 10px;
+    transition: all 0.3s;
+}
+
+/* Эффект нажатия для стильных кнопок */
+.stylish-button:hover {
+    border-color: #5cb85c;
+    background-color: #dff0d8;
+}
+
+/* Специальные стили для всплывающих блоков */
+.popup {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Заметки и уведомления */
+.notification {
+    background-color: #ffc107;
+    color: #212529;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Уведомления с риском */
+.risk-notification {
+    background-color: #dc3545;
     color: white;
 }
 
-.time {
-    color: #777;
-    font-size: 12px;
+/* Дополнительные настройки для шрифтов */
+h1, h2, h3 {
+    font-family: 'Georgia', serif;
 }
 
-/* Responsive Styles */
-@media only screen and (max-device-width: 850px),
-only screen and (max-device-width: 450px) {
-    * {
-        font-size: 28px;
-    }
-    img {
-        width: 65px;
-    }
-    .msg-header {
-        height: 5%;
-    }
-    .msg-page {
-        max-height: none;
-    }
+/* Стили для списков */
+ul {
+    padding-left: 20px;
 }
+
+/* Стили для строк */
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Оптимизация для изображений */
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Форматирование размеров для различных медиасистем */
+.size-100 {
+    width: 100%;
+}
+
+.size-50 {
+    width: 50%;
+}
+
+/* Основные цвета для тем */
+.primary-color {
+    color: #007bff;
+}
+
+.secondary-color {
+    color: #6c757d;
+}
+
+/* Подробный стиль для заголовка */
+.heading {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+/* Стиль для списка задач */
+.task-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Стили для закладок */
+.tab {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Стиль для активной закладки */
+.tab.active {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Стили для форм */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Паддинг для пустого блока */
+.empty-block {
+    padding: 20px;
+}
+
+/* Стили для заголовков кнопок */
+.button-title {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* Анимация для переходов */
+.fade {
+    transition: opacity 0.5s ease;
+}
+
+.fade.in {
+    opacity: 1;
+}
+
+.fade.out {
+    opacity: 0;
+}
+
+/* Заголовок для сообщений */
+.message-title {
+    font-weight: bold;
+}
+
+/* Стили для фона страницы */
+.page-background {
+    background-color: #eef0f1;
+}
+
+/* Стили для границ */
+.border-light {
+    border: 1px solid #e8e8e8;
+}
+
+/* Окна сообщений */
+.message-window {
+    padding: 20px;
+}
+
+/* Стили для ссылок */
+.link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* Работа с кнопками, изменяющими эффект */
+.button-effect {
+    display: inline-block;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Группировка кнопок */
+.button-group {
+    display: flex;
+}
+
+/* Подсвеченные сообщения */
+.highlight-message {
+    background-color: #fff3cd;
+}
+
+/* Стили для заголовков чата */
+.chat-title {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Позиционирование и размеры для сообщения */
+.message-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Разметка для меток */
+.label {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Фиксация фона документа */
+.fixed-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Завершающие объединения стилей */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Стилизация обработчика ошибок */
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+/* Стили для ввода ошибок */
+.error-input {
+    border: 1px solid red;
+}
+
+/* Адаптивные размеры для изображений */
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
