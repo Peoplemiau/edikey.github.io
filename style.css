@@ -1,49 +1,121 @@
-/* Chat containers */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
 .container {
-    border: 2px solid #dedede;
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px 0;
+    width: 80%;
+    margin: auto;
+    margin-top: 2rem;
+    height: 80%;
 }
 
-/* Darker chat container */
-.darker {
-    border-color: #ccc;
-    background-color: #ddd;
+img {
+    width: 50px;
+    border-radius: 100%;
 }
 
-/* Clear floats */
-.container::after {
-    content: "";
-    clear: both;
-    display: table;
+.msg-header {
+    border: 1px solid #ccc;
+    background-color: #efefef;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
-/* Style images */
-.container img {
+.container1 {
     float: left;
-    max-width: 60px;
-    width: 100%;
+}
+
+.active {
+    float: left;
+    color: black;
+    font-weight: bold;
+}
+
+.chat-page {
+    padding: 0 0 50px 0;
+}
+
+.msg-inbox {
+    border: 1px solid #ccc;
+    overflow: hidden;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.chats {
+    padding: 30px 15px 0 25px;
+}
+
+.msg-page {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.msg-bottom {
+    border-top: 1px solid #ccc;
+    height: 11%;
+    background-color: #efefef;
+}
+
+.input-group {
+    float: right;
+    margin-top: 13px;
     margin-right: 20px;
-    border-radius: 50%;
 }
 
-/* Style the right image */
-.container img.right {
-    float: right;
-    margin-left: 20px;
-    margin-right:0;
+.form-control {
+    border: none;
+    border-radius: 20px;
 }
 
-/* Style time text */
-.time-right {
-    float: right;
-    color: #aaa;
+.input-group-text {
+    background: transparent;
+    cursor: pointer;
 }
 
-/* Style time text */
-.time-left {
-    float: left;
-    color: #999;
+.received-chats, .outgoing-chats {
+    margin: 26px 20px;
+}
+
+.received-chats img, .outgoing-chats img {
+    width: 50px;
+}
+
+.received-msg-inbox p, .outgoing-chats-msg p {
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.received-msg-inbox p {
+    background: #efefef;
+    color: #646464;
+}
+
+.outgoing-chats-msg p {
+    background-color: #3a12ff;
+    color: white;
+}
+
+.time {
+    color: #777;
+    font-size: 12px;
+}
+
+/* Responsive Styles */
+@media only screen and (max-device-width: 850px),
+only screen and (max-device-width: 450px) {
+    * {
+        font-size: 28px;
+    }
+    img {
+        width: 65px;
+    }
+    .msg-header {
+        height: 5%;
+    }
+    .msg-page {
+        max-height: none;
+    }
 }
